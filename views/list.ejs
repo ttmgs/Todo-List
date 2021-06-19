@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDO List</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+      <!-- if ejs var kindofday is equal to saturday or sunday change h1 to red else blue -->
+  <% if ( kindOfDay === "Saturday" || kindOfDay  === "Sunday") { %>
+  <h1 style="color: red"><%= kindOfDay %> ToDo List! </h1>
+  <% } else { %>
+    <h1 style="color: rgb(28, 127, 189)"><%= kindOfDay %> To Do List! </h1>  
+  <% } %>
+
+  <!-- post request made to path /  -->
+<form action="/" method="POST">
+  <input type="text" name="input">
+  <button type="submit" name="button">Add</button>
+</form>
+
+<% for (var i=0; i < items.length; i++) { %>
+  <li>  <%= items[i] %> </li>
+<% } %>
+
+</body>
+</html>
