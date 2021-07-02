@@ -9,8 +9,7 @@ app.use(express.urlencoded({extented: true}));
 app.use(express.json());
 
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + '/views'));
-
+app.use(express.static("public"));
 
 // mongodb connection
 mongoose.connect("mongodb://localhost:27017/toDB", {useNewUrlParser: true})
