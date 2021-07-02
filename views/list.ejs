@@ -8,12 +8,15 @@
         <h1> <%= listtitle %></h1>
 
 </div>
-<div id="items">
+
+<% items.forEach(function(item) {  %>
+  <li><%= item.item %></li>
+<% }) %>
 
 
   <!-- post request made to path /  -->
-<form action="/work" method="POST">
-  <input type="text" name="winput">
+<form action="/" method="POST">
+  <input type="text" name="input">
   <button type="submit" name="button">Add</button>
 </form>
 
