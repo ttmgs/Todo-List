@@ -2,7 +2,7 @@ const express = require('express');
 const ejs = require('ejs');
 const app = express();
 const mongoose = require("mongoose");
-
+var _ = require('lodash');
 
 const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({extented: true}));
@@ -78,27 +78,34 @@ app.post("/", (req, res) => {
 
 app.post("/delete", (req, res) => {
 const checkedItemId = req.body.checkbox
+var list = req.body.listname
 
+if (list === "Today") {
 List.findByIdAndRemove(checkedItemId, function(err) {
   if (err) {
     console.log("error removing list item")
   } else {
     res.redirect("/")
-  }
+     }
+})
+} else {
+  Title.findOneAndUpdate({name: list}, {$pull: {items: {_id: checkedItemId}}}, function(err, foundlist){
+    if (!err) {
+      res.redirect("/" + list)
+    }
+  })
+
+  
+}
 })
 
-
-})
-
-const titled = []
 
 
 
 
 app.get("/:custom", (req, res) => {
 
-  const title = req.params.custom
-
+  const title =   _.capitalize(req.params.custom)
 
 
 
