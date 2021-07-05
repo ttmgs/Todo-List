@@ -1,29 +1,38 @@
-<%- include("footer") -%>
-<%- include("header") -%>
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDO List</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-<link rel="stylesheet" href="style.css">
+<!-- <link rel="stylesheet" href="style.css"> -->
 <body>
-      <div id="container">
-        <h1> <%= listtitle %></h1>
 
+
+
+  <div class="box" id="heading">
+    <h1> <%= listtitle %></h1>
 </div>
-<div id="items">
 
-
-  <!-- post request made to path /  -->
-<form action="/work" method="POST">
-  <input type="text" name="winput">
-  <button type="submit" name="button" value="<% worklist %>">Add</button>
+<div class="box">
+<form action="/delete" method="POST">
+<div class="item">
+<input type="checkbox" name="checkbox" onchange="this.form.submit()">
+<p><%=  newlistitems%></p> 
+</div>
 </form>
 
-<% for (var i=0; i < worklist.length; i++) { %>
-  <li> <%= worklist[i] %> </li>
-<% } %>
+<form action="/" method="POST">
+<input type="text" name="input" autocomplete="off">
+<button type="submit" name="button">+</button>
+</form>
+</div>
 
 
 
-
-
+  
 </div>
 </body>
