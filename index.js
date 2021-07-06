@@ -12,7 +12,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // mongodb connection
-mongoose.connect("mongodb://localhost:27017/toDB", {useNewUrlParser: true})
+mongoose.connect("mongodb+srv://ttmgs:Windsor2000!!@cluster0.a9rki.mongodb.net/toDB", {useNewUrlParser: true})
 
 // schemas
 const listSchema = mongoose.Schema({
@@ -105,7 +105,7 @@ List.findByIdAndRemove(checkedItemId, function(err) {
 
 app.get("/:custom", (req, res) => {
 
-  const title =   _.capitalize(req.params.custom)
+  const title = _.capitalize(req.params.custom)
 
 
 
