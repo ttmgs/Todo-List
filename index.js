@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require("mongoose");
 var _ = require('lodash');
 
-const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({extented: true}));
 app.use(express.json());
 
@@ -139,8 +138,11 @@ res.render("list", {listtitle: foundlist.name, items: foundlist.items})
 
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
-
-app.listen(PORT, function() {
-  console.log('app is listening on http://localhost:' + PORT)
+app.listen(port, function() {
+  console.log('app is has started successfully')
 });
